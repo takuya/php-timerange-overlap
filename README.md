@@ -10,8 +10,8 @@ This library for checking Events/Schedule TimeRange have Overlapping.
 ## Usage
 ```php
 use Takuya\PhpTimeOverlap\TimeRange;
-$a = new TimeRange(new DateTime( '2022-2-22 22:22' ),new DateTime( '2022-2-22 23:22' ));
-$b = new TimeRange(new DateTime( '2022-2-22 22:44' ),new DateTime( '2022-2-22 23:44' ));
+$a = new TimeRange(new DateTime( '22:22' ),new DateTime( '23:22' ));
+$b = new TimeRange(new DateTime( '22:44' ),new DateTime( '23:44' ));
 
 ## check time overlap
 $a->has_overlapping($b); // => true

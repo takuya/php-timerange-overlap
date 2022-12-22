@@ -36,7 +36,7 @@ class TimeRangeComparator {
    * @return bool
    */
   public static function isSame ( TimeRange $a, TimeRange $b ) {
-    return $a->start == $b->start && $a->end && $b->end;
+    return $a->start == $b->start && $a->end == $b->end;
   }
   
   /**
@@ -45,7 +45,7 @@ class TimeRangeComparator {
    * @return bool
    */
   public static function isDuring ( TimeRange $a, TimeRange $b ) {
-    return $a->end < $b->end && $b->start < $a->start;
+    return $b->start < $a->start && $a->end < $b->end;
   }
   
   /**
@@ -99,7 +99,7 @@ class TimeRangeComparator {
     } else if ( self::isOverlappedAfter( $a, $b ) ) {
       return self::OVERLAPS;
     } else {
-      throw new \Exception( 'unknown error' );
+      throw new \Exception( 'Unknown error. start/end has equal?.' );
     }
   }
   

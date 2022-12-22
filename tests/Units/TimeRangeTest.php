@@ -23,6 +23,16 @@ class TimeRangeTest extends TestCase {
     $this->expectException( \InvalidArgumentException::class);
     new TimeRange( $b, $a );
   }
+  public function test_sample_readme_code(){
+    $a = new TimeRange(new DateTime( '22:22' ),new DateTime( '23:22' ));
+    $b = new TimeRange(new DateTime( '22:44' ),new DateTime( '23:44' ));
+    $ret = $a->has_overlapping($b);
+    $this->assertTrue($ret);
+    $a = new TimeRange(new DateTime( '2022-02-22' ),new DateTime( '2022-02-23' ));
+    $b = new TimeRange(new DateTime( '2022-02-20' ),new DateTime( '2022-02-24' ));
+    $ret = $a->has_overlapping($b);
+    $this->assertTrue($ret);
+  }
   
 }
 
