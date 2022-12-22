@@ -1,4 +1,6 @@
 # TimeRange Overlapping Checker.
+![](https://github.com/takuya/php-timerange-overlap/workflows/main/badge.svg)
+
 
 This library for checking Events/Schedule TimeRange have Overlapping.
 
