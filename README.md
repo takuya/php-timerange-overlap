@@ -14,21 +14,25 @@ $b = new TimeRange(new DateTime( '2022-2-22 22:44' ),new DateTime( '2022-2-22 23
 ## check time overlap
 $a->has_overlapping($b); // => true
 ```
-other checking way.
+Other checking like this.
 ```php
 
 $a->before($b);
-$a->overlaps($b);
 $a->overlapped($b);
 $a->during($b);
+$a->overlaps($b);
 $a->after($b); 
-$a->same($b);
 $a->contains($b);
+$a->same($b);
 ```
 ## supported patterns.
 I named overlapping patterns like this.
 
 <img src='https://github.com/takuya/php-timerange-overlap/raw/master/docs/images/names.png' maxwidth='500' />
+
+I exclude EQUALS intentionally. If equal ex.`A->end == B->start` compared, will be overlapping.
+Comparing equals `22:22-22:25` to `22:25-22:27` , do minus explicitly(` -1 sec`  before comparing). 
+
 
 
 ## Installation
