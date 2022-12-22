@@ -27,7 +27,7 @@ $a->after($b);
 $a->contains($b);
 $a->same($b);
 ```
-## supported patterns.
+## Supported patterns.
 I named overlapping patterns like this.
 
 <img src='https://github.com/takuya/php-timerange-overlap/raw/master/docs/images/names.png' maxwidth='500' />
