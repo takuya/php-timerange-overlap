@@ -3,6 +3,7 @@
     "description": "Check TimeInterval/Event/Calendar overlapping.",
     "type": "library",
     "license": "GPL-3.0-or-later",
+    "version": "1.0",
     "autoload": {
         "psr-4": {
             "Takuya\\PhpTimeOverlap\\": "src/"
