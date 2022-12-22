@@ -1,0 +1,29 @@
+{
+    "name": "takuya/php-time-overlap",
+    "description": "Check TimeInterval/Event/Calendar overlapping.",
+    "type": "library",
+    "license": "GPL-3.0-or-later",
+    "autoload": {
+        "psr-4": {
+            "Takuya\\PhpTimeOverlap\\": "src/"
+        }
+    },
+    "minimum-stability": "stable",
+    "authors": [
+        {
+            "name": "takuya",
+            "email": "55338+takuya@users.noreply.github.com"
+        }
+    ],
+    "require": {
+        "php": ">=7.4"
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Tests\\PhpTimeOverlap\\": "tests/"
+        }
+    },    "require-dev": {
+        "larapack/dd": "^1.1",
+        "phpunit/phpunit": "^9.5"
+    }
+}
