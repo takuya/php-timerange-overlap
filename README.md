@@ -32,7 +32,7 @@ I named overlapping patterns like this.
 
 <img src='https://github.com/takuya/php-timerange-overlap/raw/master/docs/images/names.png' maxwidth='500' />
 
-I exclude EQUALS intentionally. If equal ex.`A->end == B->start` compared, will be overlapping.
+EQUALS(start==end) excluded intentionally. If equal ex.`A->end == B->start` compared,It will be overlapping.
 Comparing equals `22:22-22:25` to `22:25-22:27` , do minus explicitly(` -1 sec`  before comparing). 
 
 
