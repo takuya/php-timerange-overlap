@@ -126,7 +126,6 @@ class TimeRangeComparator {
    * @param TimeRange $a
    * @param TimeRange $b
    * @return int
-   * @throws \Exception
    */
   public static function compare ( TimeRange $a, TimeRange $b ) {
     if ( self::isSame( $a, $b ) ) {

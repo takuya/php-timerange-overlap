@@ -83,7 +83,6 @@ class TimeRange {
   /**
    * @param $b
    * @return bool
-   * @throws \Exception
    */
   public function has_overlapping ( $b ) {
     $ret = TimeRangeComparator::compare( $this, $b );
