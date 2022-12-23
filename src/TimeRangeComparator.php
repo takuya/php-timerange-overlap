@@ -19,6 +19,50 @@ class TimeRangeComparator {
   /**
    * @param TimeRange $a
    * @param TimeRange $b
+   * @return int
+   */
+  public static function compare ( TimeRange $a, TimeRange $b ) {
+    if ( self::isSame( $a, $b ) ) {
+      return self::SAME;
+    } else if ( self::isBefore( $a, $b ) ) {
+      return self::BEFORE;
+    } else if ( self::isAfter( $a, $b ) ) {
+      return self::AFTER;
+    } else if ( self::isOverlappedBefore( $a, $b ) ) {
+      return self::OVERLAPPED;
+    } else if ( self::isContains( $a, $b ) ) {
+      return self::CONTAINS;
+    } else if ( self::isDuring( $a, $b ) ) {
+      return self::DURING;
+    } else if ( self::isOverlappedAfter( $a, $b ) ) {
+      return self::OVERLAPS;
+    } else if ( self::isStartAtOnce( $a, $b ) ) {
+      return self::START_AT_ONCE;
+    } else if ( self::isEndTogether( $a, $b ) ) {
+      return self::END_TOGETHER;
+    } else if ( self::isEndFollowed( $a, $b ) ) {
+      return self::END_FOLLOWED;
+    } else if ( self::isFollowingStart( $a, $b ) ) {
+      return self::FOLLOWING_START;
+    } else {
+      return -1;
+      //throw new \Exception( 'Unknown error. not supported pattern.' );
+    }
+  }
+  
+  /**
+   * @param TimeRange $a
+   * @param TimeRange $b
+   * @return bool
+   */
+  public static function isSame ( TimeRange $a, TimeRange $b ) {
+    return $a->start == $b->start
+      && $a->end == $b->end;
+  }
+  
+  /**
+   * @param TimeRange $a
+   * @param TimeRange $b
    * @return bool
    */
   public static function isBefore ( TimeRange $a, TimeRange $b ) {
@@ -39,9 +83,41 @@ class TimeRangeComparator {
    * @param TimeRange $b
    * @return bool
    */
-  public static function isSame ( TimeRange $a, TimeRange $b ) {
-    return $a->start == $b->start
-      && $a->end == $b->end;
+  public static function isOverlappedBefore ( TimeRange $a, TimeRange $b ) {
+    return $a->start < $b->start
+      && $b->start < $a->end
+      && $a->end < $b->end;
+  }
+  
+  /**
+   * @param TimeRange $a
+   * @param TimeRange $b
+   * @return bool
+   */
+  public static function isContains ( TimeRange $a, TimeRange $b ) {
+    return $a->start < $b->start
+      && $b->end < $a->end;
+  }
+  
+  /**
+   * @param TimeRange $a
+   * @param TimeRange $b
+   * @return bool
+   */
+  public static function isDuring ( TimeRange $a, TimeRange $b ) {
+    return $b->start < $a->start
+      && $a->end < $b->end;
+  }
+  
+  /**
+   * @param TimeRange $a
+   * @param TimeRange $b
+   * @return bool
+   */
+  public static function isOverlappedAfter ( TimeRange $a, TimeRange $b ) {
+    return $a->start < $b->end
+      && $b->end < $a->end
+      && $b->start < $a->start;
   }
   
   /**
@@ -78,82 +154,6 @@ class TimeRangeComparator {
    */
   public static function isFollowingStart ( TimeRange $a, TimeRange $b ) {
     return $b->end == $a->start;
-  }
-  
-  /**
-   * @param TimeRange $a
-   * @param TimeRange $b
-   * @return bool
-   */
-  public static function isDuring ( TimeRange $a, TimeRange $b ) {
-    return $b->start < $a->start
-      && $a->end < $b->end;
-  }
-  
-  /**
-   * @param TimeRange $a
-   * @param TimeRange $b
-   * @return bool
-   */
-  public static function isContains ( TimeRange $a, TimeRange $b ) {
-    return $a->start < $b->start
-      && $b->end < $a->end;
-  }
-  
-  /**
-   * @param TimeRange $a
-   * @param TimeRange $b
-   * @return bool
-   */
-  public static function isOverlappedBefore ( TimeRange $a, TimeRange $b ) {
-    return $a->start < $b->start
-      && $b->start < $a->end
-      && $a->end < $b->end;
-  }
-  
-  /**
-   * @param TimeRange $a
-   * @param TimeRange $b
-   * @return bool
-   */
-  public static function isOverlappedAfter ( TimeRange $a, TimeRange $b ) {
-    return $a->start < $b->end
-      && $b->end < $a->end
-      && $b->start < $a->start;
-  }
-  
-  /**
-   * @param TimeRange $a
-   * @param TimeRange $b
-   * @return int
-   */
-  public static function compare ( TimeRange $a, TimeRange $b ) {
-    if ( self::isSame( $a, $b ) ) {
-      return self::SAME;
-    } else if ( self::isBefore( $a, $b ) ) {
-      return self::BEFORE;
-    } else if ( self::isAfter( $a, $b ) ) {
-      return self::AFTER;
-    } else if ( self::isOverlappedBefore( $a, $b ) ) {
-      return self::OVERLAPPED;
-    } else if ( self::isContains( $a, $b ) ) {
-      return self::CONTAINS;
-    } else if ( self::isDuring( $a, $b ) ) {
-      return self::DURING;
-    } else if ( self::isOverlappedAfter( $a, $b ) ) {
-      return self::OVERLAPS;
-    } else if ( self::isStartAtOnce( $a, $b ) ) {
-      return self::START_AT_ONCE;
-    } else if ( self::isEndTogether( $a, $b ) ) {
-      return self::END_TOGETHER;
-    } else if ( self::isEndFollowed( $a, $b ) ) {
-      return self::END_FOLLOWED;
-    } else if ( self::isFollowingStart( $a, $b ) ) {
-      return self::FOLLOWING_START;
-    } else {
-      return -1;
-      //throw new \Exception( 'Unknown error. not supported pattern.' );
-    }
   }
   
 }

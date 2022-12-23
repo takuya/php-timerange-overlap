@@ -2,24 +2,27 @@
 
 namespace Takuya\PhpTimeOverlap;
 
+use InvalidArgumentException;
+use DateTimeInterface;
+
 class TimeRange {
   
   /**
-   * @var \DateTimeInterface
+   * @var DateTimeInterface
    */
   public $start;
   /**
-   * @var \DateTimeInterface
+   * @var DateTimeInterface
    */
   public $end;
   
   /**
-   * @param \DateTimeInterface $start
-   * @param \DateTimeInterface $end
+   * @param DateTimeInterface $start
+   * @param DateTimeInterface $end
    */
-  public function __construct ( \DateTimeInterface $start, \DateTimeInterface $end ) {
+  public function __construct ( DateTimeInterface $start, DateTimeInterface $end ) {
     if ( $start >= $end ) {
-      throw new \InvalidArgumentException( 'Arguments shout be $start < $end' );
+      throw new InvalidArgumentException( 'Arguments shout be $start < $end' );
     }
     [$this->start, $this->end] = [$start, $end];
   }
