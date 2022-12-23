@@ -40,7 +40,8 @@ class TimeRangeComparator {
    * @return bool
    */
   public static function isSame ( TimeRange $a, TimeRange $b ) {
-    return $a->start == $b->start && $a->end == $b->end;
+    return $a->start == $b->start
+      && $a->end == $b->end;
   }
   
   /**
@@ -85,7 +86,8 @@ class TimeRangeComparator {
    * @return bool
    */
   public static function isDuring ( TimeRange $a, TimeRange $b ) {
-    return $b->start < $a->start && $a->end < $b->end;
+    return $b->start < $a->start
+      && $a->end < $b->end;
   }
   
   /**
@@ -94,7 +96,8 @@ class TimeRangeComparator {
    * @return bool
    */
   public static function isContains ( TimeRange $a, TimeRange $b ) {
-    return $a->start < $b->start && $b->end < $a->end;
+    return $a->start < $b->start
+      && $b->end < $a->end;
   }
   
   /**
@@ -103,7 +106,9 @@ class TimeRangeComparator {
    * @return bool
    */
   public static function isOverlappedBefore ( TimeRange $a, TimeRange $b ) {
-    return $a->start < $b->start && $b->start < $a->end && $a->end < $b->end;
+    return $a->start < $b->start
+      && $b->start < $a->end
+      && $a->end < $b->end;
   }
   
   /**
