@@ -12,7 +12,7 @@ class TimeRangeComparator {
   const AFTER = 0x002;
   const BEFORE = 0x004;
   const START_AT_ONCE = 0x0013;
-  const END_TOGETHER   = 0x0015;
+  const END_TOGETHER = 0x0015;
   const END_FOLLOWED = 0x00017;
   const FOLLOWING_START = 0x00019;
   
@@ -48,8 +48,8 @@ class TimeRangeComparator {
    * @param TimeRange $b
    * @return bool
    */
-  public static function isStartAtOnce( TimeRange $a, TimeRange $b){
-    return $a->start== $b->start;
+  public static function isStartAtOnce ( TimeRange $a, TimeRange $b ) {
+    return $a->start == $b->start;
   }
   
   /**
@@ -57,8 +57,8 @@ class TimeRangeComparator {
    * @param TimeRange $b
    * @return bool
    */
-  public static function isEndTogether( TimeRange $a, TimeRange $b){
-    return $a->end== $b->end;
+  public static function isEndTogether ( TimeRange $a, TimeRange $b ) {
+    return $a->end == $b->end;
   }
   
   /**
@@ -66,7 +66,7 @@ class TimeRangeComparator {
    * @param TimeRange $b
    * @return bool
    */
-  public static function isEndFollowed( TimeRange $a, TimeRange $b){
+  public static function isEndFollowed ( TimeRange $a, TimeRange $b ) {
     return $a->end == $b->start;
   }
   
@@ -75,8 +75,8 @@ class TimeRangeComparator {
    * @param TimeRange $b
    * @return bool
    */
-  public static function isFollowingStart( TimeRange $a, TimeRange $b){
-    return $b->end==$a->start;
+  public static function isFollowingStart ( TimeRange $a, TimeRange $b ) {
+    return $b->end == $a->start;
   }
   
   /**

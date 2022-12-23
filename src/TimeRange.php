@@ -17,67 +17,67 @@ class TimeRange {
    * @param \DateTimeInterface $start
    * @param \DateTimeInterface $end
    */
-  public function __construct ( \DateTimeInterface  $start, \DateTimeInterface  $end ) {
-    if ($start>=$end){
-      throw new \InvalidArgumentException('Arguments shout be $start < $end');
+  public function __construct ( \DateTimeInterface $start, \DateTimeInterface $end ) {
+    if ( $start >= $end ) {
+      throw new \InvalidArgumentException( 'Arguments shout be $start < $end' );
     }
-    [$this->start, $this->end] = [$start, $end] ;
+    [$this->start, $this->end] = [$start, $end];
   }
   
   /**
    * @param TimeRange $b
    * @return bool
    */
-  public function overlaps( TimeRange $b){
-    return TimeRangeComparator::isOverlappedBefore($this,$b);
+  public function overlaps ( TimeRange $b ) {
+    return TimeRangeComparator::isOverlappedBefore( $this, $b );
   }
   
   /**
    * @param TimeRange $b
    * @return bool
    */
-  public function overlapped( TimeRange $b){
-    return TimeRangeComparator::isOverlappedAfter($this,$b);
+  public function overlapped ( TimeRange $b ) {
+    return TimeRangeComparator::isOverlappedAfter( $this, $b );
   }
   
   /**
    * @param TimeRange $b
    * @return bool
    */
-  public function before( TimeRange $b){
-    return TimeRangeComparator::isBefore($this,$b);
+  public function before ( TimeRange $b ) {
+    return TimeRangeComparator::isBefore( $this, $b );
   }
   
   /**
    * @param TimeRange $b
    * @return bool
    */
-  public function after( TimeRange $b){
-    return TimeRangeComparator::isAfter($this,$b);
+  public function after ( TimeRange $b ) {
+    return TimeRangeComparator::isAfter( $this, $b );
   }
   
   /**
    * @param TimeRange $b
    * @return bool
    */
-  public function same( TimeRange $b){
-    return TimeRangeComparator::isSame($this,$b);
+  public function same ( TimeRange $b ) {
+    return TimeRangeComparator::isSame( $this, $b );
   }
   
   /**
    * @param TimeRange $b
    * @return bool
    */
-  public function contains( TimeRange $b){
-    return TimeRangeComparator::isContains($this,$b);
+  public function contains ( TimeRange $b ) {
+    return TimeRangeComparator::isContains( $this, $b );
   }
   
   /**
    * @param TimeRange $b
    * @return bool
    */
-  public function during( TimeRange $b){
-    return TimeRangeComparator::isDuring($this,$b);
+  public function during ( TimeRange $b ) {
+    return TimeRangeComparator::isDuring( $this, $b );
   }
   
   /**
@@ -85,9 +85,9 @@ class TimeRange {
    * @return bool
    * @throws \Exception
    */
-  public function has_overlapping( $b){
-    $ret = TimeRangeComparator::compare($this,$b);
-    return TimeRangeComparator::OVERLAPPING == ( $ret & TimeRangeComparator::OVERLAPPING);
+  public function has_overlapping ( $b ) {
+    $ret = TimeRangeComparator::compare( $this, $b );
+    return TimeRangeComparator::OVERLAPPING == ( $ret & TimeRangeComparator::OVERLAPPING );
   }
   
   
