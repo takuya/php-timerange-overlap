@@ -42,15 +42,39 @@ class TimeRangeComparator {
   public static function isSame ( TimeRange $a, TimeRange $b ) {
     return $a->start == $b->start && $a->end == $b->end;
   }
+  
+  /**
+   * @param TimeRange $a
+   * @param TimeRange $b
+   * @return bool
+   */
   public static function isStartAtOnce( TimeRange $a, TimeRange $b){
     return $a->start== $b->start;
   }
+  
+  /**
+   * @param TimeRange $a
+   * @param TimeRange $b
+   * @return bool
+   */
   public static function isEndTogether( TimeRange $a, TimeRange $b){
     return $a->end== $b->end;
   }
+  
+  /**
+   * @param TimeRange $a
+   * @param TimeRange $b
+   * @return bool
+   */
   public static function isEndFollowed( TimeRange $a, TimeRange $b){
     return $a->end == $b->start;
   }
+  
+  /**
+   * @param TimeRange $a
+   * @param TimeRange $b
+   * @return bool
+   */
   public static function isFollowingStart( TimeRange $a, TimeRange $b){
     return $b->end==$a->start;
   }
